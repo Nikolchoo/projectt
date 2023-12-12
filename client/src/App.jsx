@@ -5,6 +5,7 @@ import Path from './paths';
 
 import Header from "./components/header/Header"
 import Contact from "./components/contact/Contact"
+import Home from "./components/home/Home"
 import EventList from './components/event-list/EventList';
 import EventCreate from './components/event-create/EventCreate';
 import Login from './components/login/Login';

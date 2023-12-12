@@ -1,9 +1,28 @@
+import { useNavigate } from 'react-router-dom';
+
+import * as eventService from '../../services/eventService';
 
 export default function EventCreate() {
+    const navigate = useNavigate();
     
+    const createEventSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const eventData = Object.fromEntries(new FormData(e.currentTarget));
+
+        try {
+            await eventService.create(eventData);
+
+            navigate('/events');
+        } catch (err) {
+            // Error notification
+            console.log(err);
+        }
+    }
+
     return (
         <section id="create-page" className="auth">
-            <form id="create" onSubmit={"......."}>
+            <form id="create" onSubmit={createEventSubmitHandler}>
                 <div className="container">
                     <h1>Create Events</h1>
                     <label htmlFor="leg-title">Event title:</label>
