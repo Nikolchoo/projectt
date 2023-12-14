@@ -1,11 +1,12 @@
-import { redirect } from "react-router-dom";
-
-function Submit () {
-    alert("Thank you for your contact!")
-}
+import {useNavigate} from 'react-router-dom';
 
 export default function Contact() {
+    const navigate = useNavigate();
 
+  const navigateHome = () => {
+    alert("Thanks for your response!")
+    navigate('/');
+  };
     return (
         <section id="login-page" className="auth">
 
@@ -16,7 +17,7 @@ export default function Contact() {
 
                 <label >Description:</label>
                 <textarea></textarea>
-                <input type="submit" className="btn submit" value="Submit" onClick={Submit} redirect="/"/>
+                <input type="submit" className="btn submit" value="Submit" onClick={navigateHome}/>
             </div>
     </section>
     );

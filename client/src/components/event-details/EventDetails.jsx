@@ -9,9 +9,11 @@ import useForm from '../../hooks/useForm';
 import { pathToUrl } from "../../utils/pathUtils";
 import Path from "../../paths";
 
+
+
 export default function EventDetails() {
     const navigate = useNavigate();
-    const { email, userId } = useContext(AuthContext);
+    const { email, userId,isAuthenticated } = useContext(AuthContext);
     const [event, setEvent] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
     const { eventId } = useParams();
@@ -92,14 +94,15 @@ export default function EventDetails() {
                     </div>
                 )}
             </div>
-
-            <article className="create-comment">
-                <label>Add new comment:</label>
-                <form className="form" onSubmit={onSubmit}>
-                    <textarea name="comment" value={values.comment} onChange={onChange} placeholder="Comment......"></textarea>
-                    <input className="btn submit" type="submit" value="Add Comment" />
-                </form>
-            </article>
+            {isAuthenticated && (
+                <article className="create-comment">
+                    <label>Add new comment:</label>
+                    <form className="form" onSubmit={onSubmit}>
+                        <textarea name="comment" value={values.comment} onChange={onChange} placeholder="Comment......"></textarea>
+                        <input className="btn submit" type="submit" value="Add Comment" />
+                    </form>
+                </article>
+            )}
         </section>
     );
 }
