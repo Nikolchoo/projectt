@@ -10,7 +10,7 @@ export default function Header() {
 
     return (
         <header>
-            <h1><Link className="home" to="/">Events</Link></h1>
+            <h1><Link className="home" to="/">EventsLibrary</Link></h1>
             <nav>
                 <Link to="/events">All events</Link>
                 {isAuthenticated && (

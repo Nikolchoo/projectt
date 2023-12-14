@@ -64,7 +64,7 @@ export default function EventDetails() {
                 <div className="event-header">
                     <img className="event-img" src={event.imageUrl} alt={event.title} />
                     <h1>{event.title}</h1>
-                    <span className="levels">MaxLevel: {event.maxLevel}</span>
+                    <span className="levels">Capacity: {event.maxLevel}</span>
                     <p className="type">{event.category}</p>
                 </div>
 

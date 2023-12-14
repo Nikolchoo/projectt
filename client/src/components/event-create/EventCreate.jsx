@@ -15,7 +15,6 @@ export default function EventCreate() {
 
             navigate('/events');
         } catch (err) {
-            // Error notification
             console.log(err);
         }
     }

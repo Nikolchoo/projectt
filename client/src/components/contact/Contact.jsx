@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 function Submit () {
     alert("Thank you for your contact!")
 }
@@ -14,7 +16,7 @@ export default function Contact() {
 
                 <label >Description:</label>
                 <textarea></textarea>
-                <input type="submit" className="btn submit" value="Submit" onClick={Submit}/>
+                <input type="submit" className="btn submit" value="Submit" onClick={Submit} redirect="/"/>
             </div>
     </section>
     );
