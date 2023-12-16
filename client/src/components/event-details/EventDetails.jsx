@@ -15,6 +15,7 @@ export default function EventDetails() {
     const navigate = useNavigate();
     const { email, userId,isAuthenticated } = useContext(AuthContext);
     const [event, setEvent] = useState({});
+    const [isButtonDisabled, setButtonDisabled] = useState(false);
     const [comments, dispatch] = useReducer(reducer, []);
     const { eventId } = useParams();
 
@@ -44,6 +45,50 @@ export default function EventDetails() {
             payload: newComment
         })
     }
+    const [likeCount, setLikeCount] = useState(0);
+    const [dislikeCount, setDislikeCount] = useState(0);
+    
+    const [activeBtn, setActiveBtn] = useState("none");
+
+    const handleLikeClick = () => {
+        if (activeBtn === "none") {
+          setLikeCount(likeCount + 1);
+          setActiveBtn("like");
+          return;
+        }
+     
+        if (activeBtn === 'like'){
+          setLikeCount(likeCount - 1);
+          setActiveBtn("none");
+          return;
+        }
+     
+        if (activeBtn === "dislike") {
+          setLikeCount(likeCount + 1);
+          setDislikeCount(dislikeCount - 1);
+          setActiveBtn("like");
+        }
+      };
+      const handleDisikeClick = () => {
+        if (activeBtn === "none") {
+          setDislikeCount(dislikeCount + 1);
+          setActiveBtn("dislike");
+          return;
+        }
+       
+        if (activeBtn === 'dislike'){
+          setDislikeCount(dislikeCount - 1);
+          setActiveBtn("none");
+          return;
+        }
+     
+        if (activeBtn === "like") {
+          setDislikeCount(dislikeCount + 1);
+          setLikeCount(likeCount - 1);
+          setActiveBtn("dislike");
+        }
+      };
+    
 
     const deleteButtonClickHandler = async () => {
         const hasConfirmed = confirm(`Are you sure you want to delete ${event.title}`);
@@ -92,6 +137,23 @@ export default function EventDetails() {
                         <Link to={pathToUrl(Path.EventEdit, { eventId })} className="button">Edit</Link>
                         <button className="button" onClick={deleteButtonClickHandler}>Delete</button>
                     </div>
+                )}
+                {(!(userId === event._ownerId) && isAuthenticated) && (
+                    <div className="btn-container">
+                    <button
+                      className={`btn ${activeBtn === "like" ? "like-active" : ""}`}
+                      onClick={handleLikeClick}
+                    >
+                      Like 
+                    </button>
+                 
+                    <button
+                      className={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`}
+                      onClick={handleDisikeClick}
+                    >
+                      Dislike 
+                    </button>
+                  </div>
                 )}
             </div>
             {isAuthenticated && (
