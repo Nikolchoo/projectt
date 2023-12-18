@@ -15,7 +15,6 @@ export default function EventDetails() {
     const navigate = useNavigate();
     const { email, userId,isAuthenticated } = useContext(AuthContext);
     const [event, setEvent] = useState({});
-    const [isButtonDisabled, setButtonDisabled] = useState(false);
     const [comments, dispatch] = useReducer(reducer, []);
     const { eventId } = useParams();
 
@@ -39,7 +38,10 @@ export default function EventDetails() {
         );
 
         newComment.owner = { email };
-
+        if((document.getElementById('comment').value).length <= 5){
+          alert('The category should be atleast 6 digits')
+          throw new Error('The title should be atleast 4 digits');
+      }
         dispatch({
             type: 'ADD_COMMENT',
             payload: newComment
@@ -160,7 +162,7 @@ export default function EventDetails() {
                 <article className="create-comment">
                     <label>Add new comment:</label>
                     <form className="form" onSubmit={onSubmit}>
-                        <textarea name="comment" value={values.comment} onChange={onChange} placeholder="Comment......"></textarea>
+                        <textarea name="comment" id="comment" value={values.comment} onChange={onChange} placeholder="Comment......"></textarea>
                         <input className="btn submit" type="submit" value="Add Comment" />
                     </form>
                 </article>

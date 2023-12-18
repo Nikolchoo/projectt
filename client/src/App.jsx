@@ -24,12 +24,12 @@ function App() {
                     <Header />
 
                     <Routes>
-                        <Route path={Path.Home} element={<Home />} />
-                        <Route path="/events" element={<EventList />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/events/:eventId" element={<EventDetails />} />
+                            <Route path={Path.Home} element={<Home />} />
+                            <Route path="/events" element={<EventList />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/events/:eventId" element={<EventDetails />} />
 
                         <Route element={<AuthGuard />}>
                             <Route path="/events/create" element={<EventCreate />} />

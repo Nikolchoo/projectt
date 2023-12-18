@@ -10,13 +10,19 @@ const RegisterFormKeys = {
 };
 
 export default function Register() {
-    const { registerSubmitHandler } = useContext(AuthContext);
+    const { registerSubmitHandler,isAuthenticated} = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [RegisterFormKeys.Email]: '',
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: '',
     });
-
+    if(isAuthenticated){
+        return (
+            <Routes>
+                <Route path="/"></Route>
+            </Routes>
+        )
+    }
     return (
         <section id="register-page" className="content auth">
             <form id="register" onSubmit={onSubmit}>
