@@ -43,7 +43,6 @@ export default function EventCreate() {
         }
         
     }
-
     return (
         <section id="create-page" className="auth">
             <form id="create" onSubmit={createEventSubmitHandler}>

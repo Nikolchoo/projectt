@@ -17,6 +17,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import AuthGuard from './components/guards/AuthGuard';
 
 function App() {
+   
     return (
         <ErrorBoundary>
             <AuthProvider>

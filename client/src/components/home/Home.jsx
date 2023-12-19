@@ -27,12 +27,13 @@ function Home({
             <div id="home-page">
                 <h1>Latest Events</h1>
 
-                {latestEvents.map(event => <LatestEvent {...event} />)}
+                {latestEvents.slice(0).reverse().map(event => <LatestEvent {...event} />)}
 
                 {!latestEvents.length && <p className="no-articles">No events yet</p>}
 
-                <p>{email}</p>
+               
             </div>
+            <p className="emailDown">{email}</p>
         </section>
     );
 }

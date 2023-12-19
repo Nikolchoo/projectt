@@ -65,7 +65,6 @@
 .event {
     box-shadow: 0px 0px 30px 0px;
     margin-top: 20px;
-    padding: 50px;
     margin-left: 50px;
     background-position: right 35% bottom 45%;
     box-sizing: border-box;
@@ -155,4 +154,7 @@
     font-weight: 700;
     font-size: 60px;
     font-family: "Agency FB";
+}
+.emailDown {
+    color: #fd5454;
 }
