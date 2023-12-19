@@ -23,6 +23,18 @@ export default function Register() {
             </Routes>
         )
     }
+    function ErrorCheck(){
+        if((document.getElementById('register-password').value).length < 6){
+            alert('The password should be atleast 6 digits')
+            throw new Error('');
+        }
+
+        if(document.getElementById('register-password').value !== document.getElementById('confirm-password').value){
+            alert('The passwords should match!')
+            throw new Error('');
+        }
+    }
+    console.log("problem");
     return (
         <section id="register-page" className="content auth">
             <form id="register" onSubmit={onSubmit}>
@@ -57,7 +69,7 @@ export default function Register() {
                         values={values[RegisterFormKeys.ConfirmPassword]}
                     />
 
-                    <input className="btn submit" type="submit" value="Register" />
+                    <input className="btn submit" type="submit" value="Register" onClick={ErrorCheck}/>
 
                     <p className="field">
                         <span>If you already have profile click <a href="/login">here</a></span>

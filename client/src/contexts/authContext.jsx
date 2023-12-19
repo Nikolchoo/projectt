@@ -14,8 +14,13 @@ export const AuthProvider = ({
     const [auth, setAuth] = usePersistedState('auth', {});
 
     const loginSubmitHandler = async (values) => {
-        const result = await authService.login(values.email, values.password);
-
+        try{
+            const result = await authService.login(values.email, values.password);
+        }catch{
+            alert("The email or the password is not correct!")
+        }
+        
+        
         setAuth(result);
 
         localStorage.setItem('accessToken', result.accessToken);
@@ -24,10 +29,13 @@ export const AuthProvider = ({
     };
 
     const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.email, values.password);
-
+        try{
+            const result = await authService.register(values.email, values.password);
+        }catch{
+            alert("The email is already used!")
+        }
+        
         setAuth(result);
-
         localStorage.setItem('accessToken', result.accessToken);
 
         navigate(Path.Home);
